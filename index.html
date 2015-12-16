@@ -17,18 +17,31 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 
 
+    <link rel="stylesheet" type="text/css" href="style.css">
     <![endif]-->
 </head>
 <body>
 
-<canvas id="myCanvas" width="240" height="300" style="border:1px solid #d3d3d3;" ondrop="drop(event)" ondragover="allowDrop(event)">
-    Your browser does not support the HTML5 canvas tag.
-</canvas>
-<img id="drag" src="/resources/dummy.png" draggable="true" ondragstart="drag(event)" width="40" height="40">
+
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="js/bootstrap.min.js"></script>
 <script src="js/foo/room.js"></script>
+
+<div id="myCanvas" width="240" height="300" ondrop="drop(event)" ondragover="allowDrop(event)">
+</div>
+
+<div id="foo" width="40" height="40"></div>
+<ul class="list-group" >
+    <li class="list-group-item">
+        <img id="img1" src="/resources/dummy.png"  width="40" height="40" draggable="true" onmousedown="get_pos(event)" ondragstart="drag(event)">
+    </li>
+    <li class="list-group-item">Dapibus ac facilisis in</li>
+    <li class="list-group-item">Morbi leo risus</li>
+    <li class="list-group-item">Porta ac consectetur ac</li>
+    <li class="list-group-item">Vestibulum at eros</li>
+</ul>
+
 </body>
 </html>

@@ -1,0 +1,46 @@
+<link rel="import"
+      href="bower_components/polymer/polymer.html">
+<link rel="stylesheet" type="text/css" href="style.css">
+<script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
+<link rel="import" href="bower_components/paper-button/paper-button.html">
+<link rel="import" href="bower_components/paper-tooltip/paper-tooltip.html">
+
+<link rel="import" href="item-list.html">
+<link rel="import" href="item-map.html">
+<dom-module id="room-app">
+
+    <template>
+        <paper-button id="btn1" raised on-click="additem">Add item </paper-button>
+        <item-map image="/resources/pic1.png"></item-map>
+        <item-list item-title="item 1" image-id="img1" item-pic="/resources/dummy.png"></item-list>
+        <paper-tooltip for="img2" position="bottom"> FFFFFFFFFFF </paper-tooltip>
+        <item-list item-title="item 2" image-id="img2" item-pic="/resources/dummy2.png"></item-list>
+    </template>
+
+    <script>
+        Polymer({
+            is: "room-app",
+
+            ready: function() {
+            },
+            addTooltip: function(itemId,comment) {
+                var itemTooltip = document.createElement("paper-tooltip");
+                document.body.appendChild(itemTooltip);
+                itemTooltip.setAttribute("for","btn1");
+                itemTooltip.setAttribute("position","bottom");
+                itemTooltip.textContent="Some TooltipText";
+            },
+            additem: function (ev){
+                var itemId="img3";
+                var itemList = document.createElement("item-list");
+                itemList.setAttribute("item-title","item 3");
+                itemList.setAttribute("image-id",itemId);
+                itemList.setAttribute("item-pic","/resources/dummy3.png");
+
+                document.body.appendChild(itemList)
+                this.addTooltip(itemId,"Some comment");
+            }
+        });
+    </script>
+
+</dom-module>

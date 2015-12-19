@@ -1,28 +1,27 @@
 <link rel="import"
       href="bower_components/polymer/polymer.html">
 
-<dom-module id="item-list">
+<dom-module id="item-map">
 
     <template>
-        <div>Some text</div>
-        <img id="img1" src="/resources/dummy.png"  width="40" height="40" draggable="true" onmousedown="get_pos(event)" ondragstart="drag(event)">
+        <div id="myCanvas" attributes="{{image}}" on-drop="drop" on-dragover="allowDrop">
+        </div>
     </template>
+    <style>
+        #myCanvas {
+            width:300px;
+            height: 300px;
+        }
 
+    </style>
     <script>
         Polymer({
-            is: "item-list",
+            is: "item-map",
             ready: function() {
-                // set this element's owner property
-                this.owner = "Daniel";
+               this.$.myCanvas.style.backgroundImage="url("+this.image+")";
             },
-            _allowDrop: function(ev) {
+            allowDrop: function(ev) {
                 ev.preventDefault();
-            },
-            get_pos: function (ev){
-                pos = [ev.pageX, ev.pageY];
-            },
-            drag: function(ev) {
-                ev.dataTransfer.setData("Text",ev.target.id);
             },
 
             getPosition: function(element) {
@@ -39,23 +38,24 @@
 
             drop:function (ev) {
                 ev.preventDefault();
-                var offset = ev.dataTransfer.getData("text/plain").split(',');
-                var data=ev.dataTransfer.getData("Text");
-
-                var img = document.getElementById("img1");
-                var dx = pos[0] - getPosition(img)["x"];
-                var dy = pos[1] - getPosition(img)["y"];
+                var img = Polymer.dom(currentItem.root).querySelector('img');
+                var dx = pos[0] - this.getPosition(img)["x"];
+                var dy = pos[1] - this.getPosition(img)["y"];
 
 
-                var list=img.parentElement.parentElement;
-                var item=img.parentElement;
-                var c = document.getElementById("myCanvas");
+                var parent=currentItem.parentElement;
+                var canvas = this.$.myCanvas;
 
-                c.appendChild(img);
-                list.removeChild(item);
-                document.getElementById("img1").style.position="absolute";
-                document.getElementById("img1").style.left=(ev.pageX-dx) +'px';
-                document.getElementById("img1").style.top=(ev.pageY-dy)+'px';
+                if(parent!=canvas) {
+                    canvas.appendChild(img);
+                    parent.removeChild(currentItem);
+                }
+
+                img.style.position = "absolute";
+                img.style.left = (ev.pageX - dx) + 'px';
+                img.style.top = (ev.pageY - dy) + 'px';
+                
+
             }
 
 

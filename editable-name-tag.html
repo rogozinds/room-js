@@ -1,18 +1,14 @@
 <link rel="import"
       href="bower_components/polymer/polymer.html">
 <!-- import the iron-input custom element -->
-<link rel="import"
-      href="bower_components/iron-input/iron-input.html">
 
 <dom-module id="editable-name-tag">
 
     <template>
-        <p>
-            This is a <strong>{{owner}}</strong>'s editable-name-tag.
+        <p nameprop="{{nameProp}}">
+            This is a at editable-name-tag <b>{{nameProp}}</b>.
         </p>
-        <!-- iron-input exposes a two-way bindable input value -->
-        <input is="iron-input" bind-value="{{owner}}"
-               placeholder="Your name here...">
+
     </template>
 
     <script>
@@ -23,6 +19,10 @@
                     type: String,
                     value: "Daniel"
                 }
+            },
+            ready: function() {
+                foo=this.nameProp;
+                console.log(foo)
             }
         });
     </script>

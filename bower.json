@@ -1,0 +1,22 @@
+{
+  "name": "room-js",
+  "homepage": "https://github.com/rogozinds/room-js",
+  "authors": [
+    "rogozinds <rogozinds@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.2.0",
+    "iron-label": "PolymerElements/iron-label#^1.0.0"
+  }
+}

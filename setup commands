@@ -1,0 +1,4 @@
+npm install -g express-generator@4 //install express
+npm install supervisor -g // install supervisor
+express node-postgres-room
+npm install pg --savec

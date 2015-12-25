@@ -18,6 +18,7 @@
 
 
     <link rel="stylesheet" type="text/css" href="style.css">
+
     <![endif]-->
 </head>
 <body>
@@ -28,7 +29,7 @@
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="js/bootstrap.min.js"></script>
 <script src="js/foo/room.js"></script>
-
+<script src="node-postgres-room/models/createfoo.js"></script>
 <div id="myCanvas" width="240" height="300" ondrop="drop(event)" ondragover="allowDrop(event)">
 </div>
 
@@ -43,5 +44,6 @@
     <li class="list-group-item">Vestibulum at eros</li>
 </ul>
 
+<button onclick="create(foo,false)">Add item to db</button>
 </body>
 </html>

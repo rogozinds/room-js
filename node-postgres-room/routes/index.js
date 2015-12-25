@@ -14,7 +14,7 @@ router.get('/', function(req, res, next) {
 router.post('/api/v1/todos', function(req, res) {
 
   var results = [];
-
+  console.log(req.body);
   // Grab data from http request
   var data = {text: req.body.text, complete: req.body.complete};
   console.log(data);
@@ -28,10 +28,10 @@ router.post('/api/v1/todos', function(req, res) {
     }
 
     // SQL Query > Insert Data
-    client.query("INSERT INTO items(text, complete) values($1, $2)", [data.text, data.complete]);
+    client.query("INSERT INTO person(name) values($1)", [data.text]);
 
     // SQL Query > Select Data
-    var query = client.query("SELECT * FROM items ORDER BY id ASC");
+    var query = client.query("SELECT * FROM person ORDER BY id ASC");
 
     // Stream results back one row at a time
     query.on('row', function(row) {
@@ -62,7 +62,7 @@ router.get('/api/v1/todos', function(req, res) {
     }
 
     // SQL Query > Select Data
-    var query = client.query("SELECT * FROM items ORDER BY id ASC;");
+    var query = client.query("SELECT * FROM person ORDER BY id ASC;");
 
     // Stream results back one row at a time
     query.on('row', function(row) {
